@@ -1,0 +1,50 @@
+using System;
+
+class FinancialForecast
+{
+    // Step 2: Recursive method to calculate future value
+    static double ForecastFutureValue(double presentValue, double growthRate, int periods)
+    {
+        // Base case
+        if (periods == 0)
+            return presentValue;
+
+        // Recursive step
+        return (1 + growthRate) * ForecastFutureValue(presentValue, growthRate, periods - 1);
+    }
+
+    // Step 3: Implementation example
+    static void Main()
+    {
+        double presentValue = 1000;
+        double growthRate = 0.05;
+        int periods = 3;
+
+        double futureValue = ForecastFutureValue(presentValue, growthRate, periods);
+        Console.WriteLine("Future Value: " + futureValue);
+    }
+
+    // Step 4: Time complexity analysis (in comment)
+    // Time complexity: O(n), where n = number of periods.
+    // Optimization: Use iteration or Math.Pow to reduce recursion overhead.
+}
+
+
+
+
+1. Understand Recursive Algorithms
+Recursion is a programming technique where a method calls itself to solve a smaller instance of the same problem. In financial forecasting, recursion can simplify the process of calculating compounded values by reducing each period step-by-step until a base case is reached.
+
+In this code:
+
+ForecastFutureValue() is a recursive method.
+
+The base case is when periods == 0, returning the initial value.
+
+The recursive case applies one period of growth and calls itself with periods - 1.
+
+4. Analysis
+Time Complexity:
+O(n), where n is the number of periods.
+
+Each recursive call handles one period, so the total number of calls is n.
